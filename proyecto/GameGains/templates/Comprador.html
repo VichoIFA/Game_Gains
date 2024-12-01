@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro para el Comprador</title>
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <style>
+        /* Fondo de la página */
+        .background {
+            background-image: url("{% static 'images/herosection.jpeg' %}");
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Cuadro del formulario */
+        .form-container {
+            background-image: url("{% static 'images/Shop.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(249, 249, 249, 0.995);
+            padding: 40px;
+            margin: 20px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: rgb(255, 255, 255);
+        }
+
+        /* Botón */
+        .btn-warning {
+            background-color: #601bb5;
+            border-color: #601bb5;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .btn-warning:hover {
+            background-color: #7a22e6;
+            border-color: #7a22e6;
+        }
+
+        .form-label{
+            font-size: 1.2em;
+            color: white;
+        }
+
+        /* Checkboxes */
+        .form-check {
+            display: block;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .form-check-input {
+            margin-top: 0.3em;
+        }
+
+        .form-check-label {
+            margin-left: 5px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="form-container">
+            <h2>FILTRO COMPRADOR:</h2>
+            <label for="ElegirTipoProducto" class="form-label" style="margin-bottom: 20px;">¿Qué tipo de producto deseas comprar?</label>
+            <select class="form-select" id="ElegirTipoProducto" aria-label="Selecciona un tipo de producto" style="margin-bottom: 20px;">
+                <option selected>Seleccione un producto</option>
+                <option value="1">Amuletos</option>
+                <option value="2">Anillos</option>
+                <option value="3">Arcos</option>
+                <option value="4">Armaduras</option>
+                <option value="5">Escudos</option>
+                <option value="6">Espadas</option>
+                <option value="7">Pociones</option>
+            </select>
+
+            <div>
+                <label class="form-label" style="margin-bottom: 20px;">Rango de Precio</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="0-250" id="rango1">
+                    <label class="form-check-label" for="rango1">
+                        Hasta $250
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="251-500" id="rango2">
+                    <label class="form-check-label" for="rango2">
+                        $251 - $500
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="501-750" id="rango3">
+                    <label class="form-check-label" for="rango3">
+                        $501 - $750
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="751-1000" id="rango4">
+                    <label class="form-check-label" for="rango4">
+                        $751 - $1000
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-warning w-100">Buscar</button>
+        </div>
+    </div>
+</body>
+</html>

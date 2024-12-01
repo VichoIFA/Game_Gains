@@ -10,12 +10,16 @@ def Login(request):
 
         if username == 'admin' and password == '1234':
             return redirect('DashboardInicial') 
-        if username == 'trabajadorCiudad_A' and password == 'ciudadA':
-            return redirect('DashboardUsuarioCiudad/A')
-        if username == 'trabajadorCiudad_B' and password == 'ciudadB':
-            return redirect('DashboardUsuarioCiudad/B')        
-        if username == 'trabajadorCiudad_C' and password == 'ciudadC':
-            return redirect('DashboardUsuarioCiudad/B')
+        if username == 'Comprador' and password == '1234':
+            return redirect('Comprador')
+        if username == 'Vendedor' and password == '1234':
+            return redirect('Vendedor')        
         else:
             return render(request, 'Login.html', {'error': 'Usuario o contraseña incorrectos'})
     return render(request, 'Login.html')
+
+def Comprador(request):
+    return render(request, 'Comprador.html')
+
+def Vendedor(request):
+    return render(request, 'Vendedor.html')
