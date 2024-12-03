@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Edad</title>
+    <script src="{% static 'chart.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        .custom-text {
+            font-size: 40px; 
+            font-weight: bold; 
+        }
+        body {
+            background-color: #1a0530;
+            background-position: top left, top right;
+            background-repeat: no-repeat;
+            background-size: 5% 100%;
+            color: white; /* Cambiar todo el texto del body a blanco */
+            margin-top: 0; /* Eliminar cualquier margen del body */
+            font-family: 'Bebas Neue', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" id= "barra" style = "background-color: {{color|safe}}">
+        <div class="container-fluid" style = "justify-content: center">
+            <h2 style="text-align: center; margin-right: 20px; padding-top: 10px; color:{{colorLetra|safe}}">
+                Datos de los items de {{Rareza|safe}}
+            </h2>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row" style = "margin-top: 15px">
+            <div class="col-md-12 col-lg-6 col-xl-6 mb-4 mb-sm-3">
+                <div class="card text-center shadow-lg" style="border-radius: 15px; height: 100%; overflow: hidden; max-height: 200px; background-color: rgba(255, 255, 255, 0.5);">
+                    <div class="card-header text-white" style="background-color: rgba(60, 12, 97, 0.9); border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                        <h5 class="card-title mb-0">Precio de venta promedio</h5>
+                    </div>
+                    <div class="card-body p-4" style="background-color: rgba(2, 179, 219, 0.7);">
+                        <p class="card-text custom-text" style="color: black;">{{PrecioPromedio|safe}} G</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6 col-xl- mb-4 mb-sm-3">
+                <div class="card text-center shadow-lg" style="border-radius: 15px; height: 100%; overflow: hidden; max-height: 200px; background-color: rgba(255, 255, 255, 0.5);">
+                    <div class="card-header text-white" style="background-color: rgba(60, 12, 97, 0.9); border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                        <h5 class="card-title mb-0">Precio de venta promedio</h5>
+                    </div>
+                    <div class="card-body p-4" style="background-color: rgba(2, 179, 219, 0.7);">
+                        <p class="card-text custom-text" style="color: black;">{{PrecioPromedio|safe}} G</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="padding-top: 30px;">
+        <div class="col-lg-12 col-xl-12" style="padding-bottom:30px;">
+            <div class="card text-center shadow-lg" style="border-radius: 15px; height: 300px; overflow: hidden; max-height: 350px; background-color: rgba(255, 255, 255, 0.5);">
+                <div class="card-header text-white" style="background-color: rgba(60, 12, 97, 0.9); border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                    <h5 class="card-title mb-0">Stock por rareza</h5>
+                </div>
+                <div class="card-body p-4" style="background-color: rgba(2, 179, 219, 0.7);">
+                    <canvas id="mainChart3" style="width: 100%; height: auto;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            const mainChartData3 = {
+                labels: {{ Rarezas|safe }},
+                datasets: [
+                    {
+                        label: 'Cantidad de items por mercado',
+                        data: {{ CantidadRarezas|safe }},
+                        backgroundColor: ["#0033ff", "#1100ff", "#6f00ff","#b300ff", "#fb00ff"],
+                        borderColor: ["#0033ff", "#1100ff", "#6f00ff","#b300ff", "#fb00ff"],
+                        borderWidth: 1
+                    }
+                ]
+            };
+        
+            var mainChartCtx3 = document.getElementById('mainChart3').getContext('2d');
+            var mainChart3 = new Chart(mainChartCtx3, {
+                type: 'bar',
+                data: mainChartData3,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false, // Mostrar la leyenda
+                            labels: {
+                                color: 'black', // Cambiar el color del texto de la leyenda
+                                font: {
+                                    size: 14, // Ajustar el tamaño de la fuente (opcional)
+                                    weight:'bold'
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Nombre del mercado',
+                                color: 'black' // Color del título del eje X
+                            },
+                            ticks: {
+                                color: 'black' // Color de las etiquetas del eje X
+                            },
+                            grid: {
+                                color: 'black' // Color de las líneas del grid del eje X
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Cantidad de items',
+                                color: 'black' // Color del título del eje Y
+                            },
+                            ticks: {
+                                color: 'black' // Color de las etiquetas del eje Y
+                            },
+                            grid: {
+                                color: 'black' // Color de las líneas del grid del eje Y
+                            },
+                            beginAtZero: true
+                        }
+                    },
+                    layout: {
+                        padding: 10 // Espaciado opcional alrededor del gráfico
+                    },
+                }
+            });
+        });
+
+
+    </script>
+</html>

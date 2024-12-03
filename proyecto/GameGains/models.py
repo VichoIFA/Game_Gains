@@ -99,4 +99,52 @@ def CantidadDisponiblePorTipo(categoria):
         total = result[0][0]
     return total
 
+def CantidadPorRareza(categoria):
+    with connection.cursor() as cursor:
+        params = [categoria]
+        cursor.callproc('obtener_cantidad_por_tipo_producto_y_rareza', params)
+        result = cursor.fetchall()
+        total = [list(row) for row in result]
+    return total
 
+def CantidadPorMercado(categoria):
+    with connection.cursor() as cursor:
+        params = [categoria]
+        cursor.callproc('obtener_cantidad_por_tipo_producto_por_mercado', params)
+        result = cursor.fetchall()
+        total = [list(row) for row in result]
+    return total
+
+"""
+def CantidadMercadoEspecifico(categoria, mercado):
+    with connection.cursor() as cursor:
+        params = [categoria, mercado]
+        cursor.callproc('obtener_stock_por_tipo_producto_y_mercado', params)
+        result = cursor.fetchall()
+        total = [list(row) for row in result]
+    return total
+"""
+
+def PrecioPromedioItemMercado(categoria, mercado):
+    with connection.cursor() as cursor:
+        params = [categoria, mercado]
+        cursor.callproc('obtener_precio_promedio_por_tipo_producto_y_mercado', params)
+        result = cursor.fetchall()
+        total = result[0][0]
+    return total
+
+def CantidadRarezaPorMercado(categoria, mercado):
+    with connection.cursor() as cursor:
+        params = [categoria, mercado]
+        cursor.callproc('obtener_cantidad_por_rareza_y_mercado', params)
+        result = cursor.fetchall()
+        total = [list(row) for row in result]
+    return total
+
+def CantidadPorRarezaItemsDistintos(categoria, mercado):
+    with connection.cursor() as cursor:
+        params = [categoria, mercado]
+        cursor.callproc('obtener_cantidad_por_tipo_y_rareza', params)
+        result = cursor.fetchall()
+        total = [list(row) for row in result]
+    return total

@@ -168,6 +168,17 @@
         main {
             height: auto;
         }
+
+        .glow-effect {
+            filter: drop-shadow(0 0 15px rgba(179, 0, 255, 0.8)); /* Efecto de glow siguiendo la figura del PNG */
+            transition: filter 0.3s ease-in-out; /* Transición suave */
+        }
+        
+        .glow-effect:hover {
+            filter: drop-shadow(0 0 30px rgba(179, 0, 255, 1)); /* Glow más intenso al pasar el cursor */
+        }
+        
+        
     </style>
 </head>
 
@@ -214,8 +225,8 @@
                     </button>
                     <div class="collapse" id="dashboardCollapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:#606060;">Idioma</a></li>
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:#606060;">Configuracion de datos</a></li>
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:white !important;">Idioma</a></li>
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:white !important;">Configuracion de datos</a></li>
                         </ul>
                     </div>
                 </li>
@@ -241,17 +252,15 @@
                     </button>
                     <div class="collapse" id="accountCollapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:#000000;">Perfil</a></li>
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:#606060;">Configuraciones</a></li>
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:#606060;">Cerrar Sesión</a></li>
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:white !important;">Perfil</a></li>
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:white !important;">Configuraciones</a></li>
+                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:white !important;">Cerrar Sesión</a></li>
                         </ul>
                     </div>
                     </li>
                 </ul>
             </div>
         
-            
-
             <main class="col-md-9 mx-sm-auto mx-md-auto mx-lg-auto px-lg-0 px-md-0 px-sm-0">
                 <div class="container-fluid">
                     <div class="row" style="min-height: 90vh;">
@@ -259,11 +268,15 @@
                         <div class="col-md-5 col-lg-5 col-xl-4 col-sm-12 d-flex align-items-center justify-content-center" style="padding: 0; margin-left: 0; padding-right: 3%;">
                             <!-- Card centrada -->
                             <div class="card" style="height: 80%; width: 100%; max-width: 400px; background-color: transparent; border: none; box-shadow: none;">
-                                <div class="card-body">
-                                    <img src="{% static 'images/escudo1.png' %}" alt="Descripción de la imagen" style="height: 100%; width: 100%; object-fit: contain; background-color: transparent;">
+                                <div class="card-body d-flex justify-content-center align-items-center" style="padding: 0; height: 100%; display: flex; justify-content: center; align-items: center;">
+                                    <img src="{% static 'images/pocion1.webp' %}" alt="Descripción de la imagen" class="glow-effect" style="width: 100%; height: 100%; max-height:800px; object-fit: contain;">
                                 </div>
                             </div>
                         </div>
+                        
+                        
+                        
+                        
                 
                         <!-- Columna derecha (conteniendo las tarjetas) -->
                         <div class="col-md-7 col-lg-7 col-xl-8" style="padding-top:60px; max-height: 90%">
@@ -306,8 +319,8 @@
                 
                             <!-- Última fila de tarjetas -->
                             <div class="row" style="padding-top: 30px;">
-                                <div class="col-lg-12 col-xl-6" style="padding-bottom:30px;">
-                                    <div class="card text-center shadow-lg" style="border-radius: 15px; height: 350px; overflow: hidden; max-height: 350px; background-color: rgba(255, 255, 255, 0.5);">
+                                <div class="col-lg-12 col-xl-12" style="padding-bottom:30px;">
+                                    <div class="card text-center shadow-lg" style="border-radius: 15px; height: 300px; overflow: hidden; max-height: 350px; background-color: rgba(255, 255, 255, 0.5);">
                                         <div class="card-header text-white" style="background-color: rgba(60, 12, 97, 0.9); border-top-left-radius: 15px; border-top-right-radius: 15px;">
                                             <h5 class="card-title mb-0">Stock por mercado</h5>
                                         </div>
@@ -316,8 +329,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 col-xl-6" style="padding-bottom:30px;">
-                                    <div class="card text-center shadow-lg" style="border-radius: 15px; height: 350px; overflow: hidden; max-height: 350px; background-color: rgba(255, 255, 255, 0.5);">
+                            </div>
+                            <div class="row" style="padding-top: 30px;">
+                                <div class="col-lg-12 col-xl-12" style="padding-bottom:30px;">
+                                    <div class="card text-center shadow-lg" style="border-radius: 15px; height: 300px; overflow: hidden; max-height: 350px; background-color: rgba(255, 255, 255, 0.5);">
                                         <div class="card-header text-white" style="background-color: rgba(60, 12, 97, 0.9); border-top-left-radius: 15px; border-top-right-radius: 15px;">
                                             <h5 class="card-title mb-0">Stock por rareza</h5>
                                         </div>
@@ -375,6 +390,283 @@
                         });
                     });
                     
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const mainChartData1 = {
+                            labels: {{ cantidadMercado|safe }},
+                            datasets: [
+                                {
+                                    label: 'Cantidad de items por mercado',
+                                    data: {{ nombreMercado|safe }},
+                                    backgroundColor: ["#0033ff", "#1100ff", "#6f00ff","#b300ff", "#fb00ff"],
+                                    borderColor: ["#0033ff", "#1100ff", "#6f00ff","#b300ff", "#fb00ff"],
+                                    borderWidth: 1
+                                }
+                            ]
+                        };
+                    
+                        var mainChartCtx1 = document.getElementById('mainChart').getContext('2d');
+                        var mainChart1 = new Chart(mainChartCtx1, {
+                            type: 'bar',
+                            data: mainChartData1,
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        display: false, // Mostrar la leyenda
+                                        labels: {
+                                            color: 'black', // Cambiar el color del texto de la leyenda
+                                            font: {
+                                                size: 14, // Ajustar el tamaño de la fuente (opcional)
+                                                weight:'bold'
+                                            }
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Nombre del mercado',
+                                            color: 'black' // Color del título del eje X
+                                        },
+                                        ticks: {
+                                            color: 'black' // Color de las etiquetas del eje X
+                                        },
+                                        grid: {
+                                            color: 'black' // Color de las líneas del grid del eje X
+                                        }
+                                    },
+                                    y: {
+                                        title: {
+                                            display: true,
+                                            text: 'Cantidad de items',
+                                            color: 'black' // Color del título del eje Y
+                                        },
+                                        ticks: {
+                                            color: 'black' // Color de las etiquetas del eje Y
+                                        },
+                                        grid: {
+                                            color: 'black' // Color de las líneas del grid del eje Y
+                                        },
+                                        beginAtZero: true
+                                    }
+                                },
+                                layout: {
+                                    padding: 10 // Espaciado opcional alrededor del gráfico
+                                },
+                                onClick: async (event, elements) => {
+                                    if (elements.length > 0) {
+                                        var index = elements[0].index;
+                                
+                                        try {
+                                            const link = `/detalleProductoMercado/{{producto|safe}}/${index}`;
+                                            const width = 500; 
+                                            const height = 700; 
+                                
+                                            const left = window.screenX + (window.innerWidth / 2) - (width / 2);
+                                            const top = window.screenY + (window.innerHeight / 2) - (height / 2);
+                                
+                                            const nuevaVentana = window.open("", "_blank", `width=${width},height=${height},top=${top},left=${left},resizable=yes`);
+                                
+                                            if (nuevaVentana) {
+
+                                                nuevaVentana.document.open();
+                                                nuevaVentana.document.write(`
+                                                    <!DOCTYPE html>
+                                                    <html lang="en">
+                                                    <head>
+                                                        <meta charset="UTF-8">
+                                                        <title>Cargando...</title>
+                                                        <style>
+                                                            body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+                                                            .lds-dual-ring {
+                                                                color: #000;
+                                                            }
+                                                            .lds-dual-ring, .lds-dual-ring:after {
+                                                                box-sizing: border-box;
+                                                            }
+                                                            .lds-dual-ring {
+                                                                display: inline-block;
+                                                                width: 80px;
+                                                                height: 80px;
+                                                            }
+                                                            .lds-dual-ring:after {
+                                                                content: " ";
+                                                                display: block;
+                                                                width: 64px;
+                                                                height: 64px;
+                                                                margin: 8px;
+                                                                border-radius: 50%;
+                                                                border: 6.4px solid currentColor;
+                                                                border-color: currentColor transparent currentColor transparent;
+                                                                animation: lds-dual-ring 1.2s linear infinite;
+                                                            }
+                                                            @keyframes lds-dual-ring {
+                                                                0% { transform: rotate(0deg); }
+                                                                100% { transform: rotate(360deg); }
+                                                            }
+                                                        </style>
+                                                    </head>
+                                                    <body>
+                                                        <div class="lds-dual-ring"></div>
+                                                    </body>
+                                                    </html>
+                                                `);
+                                                nuevaVentana.document.close();
+                                
+                                                nuevaVentana.location.href = link;
+                                            } else {
+                                                console.error("No se pudo abrir la nueva ventana.");
+                                            }
+                                        } catch (error) {
+                                            console.error("Error al abrir la nueva ventana:", error);
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        });
+                    });
+                    
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const mainChartData2 = {
+                            labels: {{ nombreRareza|safe }},
+                            datasets: [
+                                {
+                                    label: 'Cantidad de items por mercado',
+                                    data: {{ cantidadRareza|safe }},
+                                    backgroundColor: ["#0033ff", "#1100ff", "#6f00ff","#b300ff"],
+                                    borderColor: ["#0033ff", "#1100ff", "#6f00ff","#b300ff"],
+                                    borderWidth: 1
+                                }
+                            ]
+                        };
+                    
+                        var mainChartCtx2 = document.getElementById('mainChart2').getContext('2d');
+                        var mainChart2 = new Chart(mainChartCtx2, {
+                            type: 'bar',
+                            data: mainChartData2,
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        display: false, // Mostrar la leyenda
+                                        labels: {
+                                            color: 'black', // Cambiar el color del texto de la leyenda
+                                            font: {
+                                                size: 14, // Ajustar el tamaño de la fuente (opcional)
+                                                weight:'bold'
+                                            }
+                                        }
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Nombres de rarezas',
+                                            color: 'black' // Color del título del eje X
+                                        },
+                                        ticks: {
+                                            color: 'black' // Color de las etiquetas del eje X
+                                        },
+                                        grid: {
+                                            color: 'black' // Color de las líneas del grid del eje X
+                                        }
+                                    },
+                                    y: {
+                                        title: {
+                                            display: true,
+                                            text: 'Cantidad de items',
+                                            color: 'black' // Color del título del eje Y
+                                        },
+                                        ticks: {
+                                            color: 'black' // Color de las etiquetas del eje Y
+                                        },
+                                        grid: {
+                                            color: 'black' // Color de las líneas del grid del eje Y
+                                        },
+                                        beginAtZero: true
+                                    }
+                                },
+                                layout: {
+                                    padding: 10 // Espaciado opcional alrededor del gráfico
+                                },
+                                onClick: async (event, elements) => {
+                                    if (elements.length > 0) {
+                                        var index = elements[0].index;
+                                
+                                        try {
+                                            const link = `/detalleRarezaComprador/{{producto|safe}}/${index}`;
+                                            const width = 500; 
+                                            const height = 700; 
+                                
+                                            const left = window.screenX + (window.innerWidth / 2) - (width / 2);
+                                            const top = window.screenY + (window.innerHeight / 2) - (height / 2);
+                                
+                                            const nuevaVentana = window.open("", "_blank", `width=${width},height=${height},top=${top},left=${left},resizable=yes`);
+                                
+                                            if (nuevaVentana) {
+
+                                                nuevaVentana.document.open();
+                                                nuevaVentana.document.write(`
+                                                    <!DOCTYPE html>
+                                                    <html lang="en">
+                                                    <head>
+                                                        <meta charset="UTF-8">
+                                                        <title>Cargando...</title>
+                                                        <style>
+                                                            body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+                                                            .lds-dual-ring {
+                                                                color: #000;
+                                                            }
+                                                            .lds-dual-ring, .lds-dual-ring:after {
+                                                                box-sizing: border-box;
+                                                            }
+                                                            .lds-dual-ring {
+                                                                display: inline-block;
+                                                                width: 80px;
+                                                                height: 80px;
+                                                            }
+                                                            .lds-dual-ring:after {
+                                                                content: " ";
+                                                                display: block;
+                                                                width: 64px;
+                                                                height: 64px;
+                                                                margin: 8px;
+                                                                border-radius: 50%;
+                                                                border: 6.4px solid currentColor;
+                                                                border-color: currentColor transparent currentColor transparent;
+                                                                animation: lds-dual-ring 1.2s linear infinite;
+                                                            }
+                                                            @keyframes lds-dual-ring {
+                                                                0% { transform: rotate(0deg); }
+                                                                100% { transform: rotate(360deg); }
+                                                            }
+                                                        </style>
+                                                    </head>
+                                                    <body>
+                                                        <div class="lds-dual-ring"></div>
+                                                    </body>
+                                                    </html>
+                                                `);
+                                                nuevaVentana.document.close();
+                                
+                                                nuevaVentana.location.href = link;
+                                            } else {
+                                                console.error("No se pudo abrir la nueva ventana.");
+                                            }
+                                        } catch (error) {
+                                            console.error("Error al abrir la nueva ventana:", error);
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        });
+                    });
 
                     function openPage(url) {
                         const newWindow = window.open('', '_blank', 'width=500,height=700,top=100,left=100,resizable=yes');
