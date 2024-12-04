@@ -107,28 +107,28 @@
     
             <div>
                 <label for="PrecioProducto" class="form-label" style="margin-bottom: 20px;">¿A qué precio lo quieres vender?</label>
-                <input type="number" class="form-control" id="PrecioProducto" style="margin-bottom: 20px;" placeholder="Ingresa el precio">
+                <input type="number" class="form-control" id="PrecioProducto" style="margin-bottom: 20px;" min="0" step="0.5" placeholder="Ingresa el precio">
     
                 <label for="CantidadProducto" class="form-label" style="margin-bottom: 20px;">¿Cuántas unidades quieres vender?</label>
-                <input type="number" class="form-control" id="CantidadProducto" style="margin-bottom: 20px;" placeholder="Introduce la cantidad">
+                <input type="number" class="form-control" id="CantidadProducto" style="margin-bottom: 20px;" min="1" step="1" placeholder="Introduce la cantidad">
     
                 <div class="text-center">
                     <label for="RarezaProducto" class="form-label" style="margin-bottom: 20px;">¿De qué rareza es el producto?</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="0-20" id="rango1">
-                        <label class="form-check-label" for="rango1">Hasta 20 min (Común)</label>
+                        <input class="form-check-input" type="radio" name="rareza-producto" value="0-20" id="rango1">
+                        <label class="form-check-label" for="rango1">Hasta 20 min -> Común</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="21-40" id="rango2">
-                        <label class="form-check-label" for="rango2">21-40 min (Raro)</label>
+                        <input class="form-check-input" type="radio" name="rareza-producto" value="21-40" id="rango2">
+                        <label class="form-check-label" for="rango2">21-40 min -> Raro</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="41-60" id="rango3">
-                        <label class="form-check-label" for="rango3">41-60 min (Mítico)</label>
+                        <input class="form-check-input" type="radio" name="rareza-producto" value="41-60" id="rango3">
+                        <label class="form-check-label" for="rango3">41-60 min -> Legendario</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="61+" id="rango4">
-                        <label class="form-check-label" for="rango4">61 o más (Legendario)</label>
+                        <input class="form-check-input" type="radio" name="rareza-producto" value="61+" id="rango4">
+                        <label class="form-check-label" for="rango4">61 o más -> Mítico</label>
                     </div>
                 </div>
     
