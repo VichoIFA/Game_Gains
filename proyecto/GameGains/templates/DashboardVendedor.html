@@ -177,6 +177,8 @@
         .glow-effect:hover {
             filter: drop-shadow(0 0 30px rgba(179, 0, 255, 1)); /* Glow más intenso al pasar el cursor */
         }
+        
+        
     </style>
 </head>
 
@@ -280,7 +282,7 @@
                                     <div class="col-md-12 col-lg-12 col-xl-4 mb-3 mb-sm-3">
                                         <div class="card text-center shadow-lg" style="border-radius: 15px; height: 100%; overflow: hidden; max-height: 200px; background-color: rgba(255, 255, 255, 0.5);">
                                             <div class="card-header text-white" style="background-color: rgba(60, 12, 97, 0.9); border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                                                <h5 class="card-title mb-0">Precio de venta promedio actual</h5>
+                                                <h5 class="card-title mb-0">Precio de venta promedio</h5>
                                             </div>
                                             <div class="card-body p-4" style="background-color: rgba(2, 179, 219, 0.7);">
                                                 <p class="card-text custom-text" style="color: {{color|safe}};">{{PrecioPromedio|safe}} G</p>
@@ -288,7 +290,7 @@
                                                         {% if color == "#024f01" %}
                                                             precio razonable
                                                         {% elif color == "#a10202" %}
-                                                            mal precio
+                                                            estafa
                                                         {% endif %}
                                                     </span>
                                                 </p>
@@ -298,7 +300,7 @@
                                     <div class="col-md-12 col-lg-12 col-xl-4 mb-3 mb-sm-3">
                                         <div class="card text-center shadow-lg" style="border-radius: 15px; height: 100%; overflow: hidden; max-height: 200px; background-color: rgba(255, 255, 255, 0.5);">
                                             <div class="card-header text-white" style="background-color: rgba(60, 12, 97, 0.9); border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                                                <h5 class="card-title mb-0">Stock total en el mercado actual</h5>
+                                                <h5 class="card-title mb-0">Stock total en el mercado</h5>
                                             </div>
                                             <div class="card-body p-4" style="background-color: rgba(2, 179, 219, 0.7);">
                                                 <p class="card-text custom-text" style="color: black;">{{StockTotal|safe}}</p>
@@ -308,10 +310,10 @@
                                     <div class="col-md-12 col-lg-12 col-xl-4 mb-3 mb-sm-3">
                                         <div class="card text-center shadow-lg" style="border-radius: 15px; height: 100%; overflow: hidden; max-height: 200px; background-color: rgba(255, 255, 255, 0.5);">
                                             <div class="card-header text-white" style="background-color: rgba(60, 12, 97, 0.9); border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                                                <h5 class="card-title mb-0">Items existentes del mismo tipo</h5>
+                                                <h5 class="card-title mb-0">Demanda dentro del mercado</h5>
                                             </div>
                                             <div class="card-body p-4" style="background-color: rgba(2, 179, 219, 0.7);">
-                                                <p class="card-text custom-text" style="color: black;">{{CantidadPorTipo|safe}}</p>
+                                                <p class="card-text custom-text" style="color: black;">{{demanda|safe}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -462,7 +464,7 @@
                                         var index = elements[0].index;
                                 
                                         try {
-                                            const link = `/detalleProductoMercado/{{producto|safe}}/${index}`;
+                                            const link = `/detalleProductoMercadoVendedor/{{producto|safe}}/${index}`;
                                             const width = 500; 
                                             const height = 700; 
                                 
@@ -601,7 +603,7 @@
                                         var index = elements[0].index;
                                 
                                         try {
-                                            const link = `/detalleRarezaComprador/{{producto|safe}}/${index}`;
+                                            const link = `/detalleRarezaVendedor/{{producto|safe}}/${index}`;
                                             const width = 500; 
                                             const height = 700; 
                                 

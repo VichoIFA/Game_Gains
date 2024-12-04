@@ -95,53 +95,89 @@
             <h2>FILTRO VENDEDOR:</h2>
             <label for="ElegirTipoProducto" class="form-label" style="margin-bottom: 20px;">¿Qué tipo de producto deseas vender?</label>
             <select class="form-select" id="ElegirTipoProducto" aria-label="Selecciona un tipo de producto" style="margin-bottom: 20px;">
-                <option selected>Seleccione un producto</option>
-                <option value="1">Amuletos</option>
-                <option value="2">Anillos</option>
-                <option value="3">Arcos</option>
-                <option value="4">Armaduras</option>
-                <option value="5">Escudos</option>
-                <option value="6">Espadas</option>
-                <option value="7">Pociones</option>
+                <option value="" selected>Seleccione un producto</option>
+                <option value="Amuletos">Amuletos</option>
+                <option value="Anillos">Anillos</option>
+                <option value="Arcos">Arcos</option>
+                <option value="Armaduras">Armaduras</option>
+                <option value="Escudos">Escudos</option>
+                <option value="Espadas">Espadas</option>
+                <option value="Pociones">Pociones</option>
             </select>
-
-
-        <div>
-            <label for="PrecioProducto" class="form-label" style="margin-bottom: 20px;">¿A qué precio lo quieres vender?</label>
-            <input type="number" class="form-control" id="PrecioProducto" style="margin-bottom: 20px;" placeholder="Ingresa el precio">
-
-            <label for="CantidadProducto" class="form-label" style="margin-bottom: 20px;">¿Cuantas unidades quieres vender?</label>
-            <input type="number" class="form-control" id="CantidadProducto" style="margin-bottom: 20px;" placeholder="Introduce la cantidad">
-
-        <div class="text-center">
-            <label for="RarezaProducto" class="form-label" style="margin-bottom: 20px;">¿De qué rareza es el producto?</label>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="0-20" id="rango1">
-                <label class="form-check-label" for="rango1">
-                    Hasta 20 min (Común)
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="21-40" id="rango2">
-                <label class="form-check-label" for="rango2">
-                    21-40 min (Raro)
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="41-60" id="rango3">
-                <label class="form-check-label" for="rango3">
-                    41-61 min (Mítico)
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="61+" id="rango4">
-                <label class="form-check-label" for="rango4">
-                    61 o más (Legendario)
-                </label>
+    
+            <div>
+                <label for="PrecioProducto" class="form-label" style="margin-bottom: 20px;">¿A qué precio lo quieres vender?</label>
+                <input type="number" class="form-control" id="PrecioProducto" style="margin-bottom: 20px;" placeholder="Ingresa el precio">
+    
+                <label for="CantidadProducto" class="form-label" style="margin-bottom: 20px;">¿Cuántas unidades quieres vender?</label>
+                <input type="number" class="form-control" id="CantidadProducto" style="margin-bottom: 20px;" placeholder="Introduce la cantidad">
+    
+                <div class="text-center">
+                    <label for="RarezaProducto" class="form-label" style="margin-bottom: 20px;">¿De qué rareza es el producto?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="0-20" id="rango1">
+                        <label class="form-check-label" for="rango1">Hasta 20 min (Común)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="21-40" id="rango2">
+                        <label class="form-check-label" for="rango2">21-40 min (Raro)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="41-60" id="rango3">
+                        <label class="form-check-label" for="rango3">41-60 min (Mítico)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="61+" id="rango4">
+                        <label class="form-check-label" for="rango4">61 o más (Legendario)</label>
+                    </div>
+                </div>
+    
+                <button type="button" id="buscarBtn" class="btn btn-warning w-100">Buscar</button>
             </div>
         </div>
-
-        <button type="submit" class="btn btn-warning w-100">Buscar</button>
     </div>
+
+    <script>
+            document.getElementById("buscarBtn").addEventListener("click", buscar);
+
+    function buscar() {
+        // Obtener valores del formulario
+        const producto = document.getElementById("ElegirTipoProducto").value;
+        const precio = document.getElementById("PrecioProducto").value;
+        const cantidad = document.getElementById("CantidadProducto").value;
+
+        const rangos = [];
+        document.querySelectorAll(".form-check-input:checked").forEach((checkbox) => {
+            rangos.push(checkbox.value);
+        });
+
+        // Validación
+        if (!producto) {
+            alert("Por favor selecciona un tipo de producto.");
+            return;
+        }
+        if (!precio) {
+            alert("Por favor ingresa el precio del producto.");
+            return;
+        }
+        if (!cantidad) {
+            alert("Por favor ingresa la cantidad de unidades.");
+            return;
+        }
+        if (rangos.length === 0) {
+            alert("Por favor selecciona al menos un rango de rareza.");
+            return;
+        }
+
+        // Construir la URL
+        const baseURL = "/DashboardVendedor";
+        const rango = rangos[0]; // Tomar el primer rango seleccionado
+        const finalURL = `${baseURL}/${producto}/${precio}/${cantidad}/${rango}`;
+
+        // Redirigir a la nueva URL
+        window.location.href = finalURL;
+    }
+
+    </script>
 </body>
 </html>
