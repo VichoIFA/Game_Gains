@@ -114,8 +114,20 @@ def ProfundizacionRareza(request, producto, rareza):
     items = ["Espadas", "Armaduras", "Pociones", "Arcos", "Escudos", "Anillos", "Amuletos"]
     rarezasFiltro = ["Común","Raro","Legendario","Mítico"]
     
-    #cantidadItemsDistintos = models.CantidadPorRarezaItemsDistintos(producto)
-    posicion = items.index(producto)+1
+    itemsPorRareza = {
+        "Espadas" : ["las espadas comúnes", "las espadas raras", "las espadas legendarias", "las espadas miticas"],
+        "Armaduras" : ["las armaduras comúnes", "las armaduras raras", "las armaduras legendarias", "las armaduras miticas"],
+        "Pociones" : ["las pociones comúnes", "las pociones raras", "las pociones legendarias", "las pociones miticas"],
+        "Arcos" : ["los arcos comúnes", "los arcos raros", "los arcos legendarios", "los arcos miticos"],
+        "Escudos" : ["los escudos comúnes", "los escudos raros", "los escudos legendarios", "los escudos miticos"],
+        "Anillos" : ["los anillos comúnes", "los anillos raros", "los anillos legendarios", "los anillos miticos"],
+        "Amuletos" : ["los amuletos comúnes", "los amuletos raros", "los amuletos legendarios", "los amuletos miticos"]
+    }
+
+    posicion = items.index(producto)
+    productoSeleccionado = items[posicion]
+    posicion += 1
+    itemSeleccion = itemsPorRareza[productoSeleccionado][int(rareza)]
     
     rarezaSeleccionada = rarezas[rareza]
     rarezaSeleccionadaProdecure = rarezasFiltro[rareza]
@@ -142,7 +154,8 @@ def ProfundizacionRareza(request, producto, rareza):
         "variedadItems" : variedadItems,
         "precioPromedio" : precioPromedio,
         "tiempoObtencion" : tiempo,
-        "cantidad" : cantidad
+        "cantidad" : cantidad,
+        "itemSeleccionado" : itemSeleccion
     }
     return render(request, 'detalleRarezaComprador.html', context)
 
@@ -157,6 +170,8 @@ def DashboardVendedor(request, producto, precio, cantidad, rareza):
         5: [static('images/anillo1.png'), static('images/anillo2.png'), static('images/anillo3.png')],
         6: [static('images/amuleto1.png'), static('images/amuleto2.png'), static('images/amuleto3.png')],
     }
+    
+    precio = float(precio)
     
     posicion = TiposProductos.index(producto)
     imagen = random.choice(escogerImagen[posicion])
@@ -206,15 +221,27 @@ def ProfundizacionRarezaVededor(request, producto, rareza):
     items = ["Espadas", "Armaduras", "Pociones", "Arcos", "Escudos", "Anillos", "Amuletos"]
     rarezasFiltro = ["Común","Raro","Legendario","Mítico"]
     
-    #cantidadItemsDistintos = models.CantidadPorRarezaItemsDistintos(producto)
-    posicion = items.index(producto)+1
-    
+    itemsPorRareza = {
+        "Espadas" : ["las espadas comúnes", "las espadas raras", "las espadas legendarias", "las espadas miticas"],
+        "Armaduras" : ["las armaduras comúnes", "las armaduras raras", "las armaduras legendarias", "las armaduras miticas"],
+        "Pociones" : ["las pociones comúnes", "las pociones raras", "las pociones legendarias", "las pociones miticas"],
+        "Arcos" : ["los arcos comúnes", "los arcos raros", "los arcos legendarios", "los arcos miticos"],
+        "Escudos" : ["los escudos comúnes", "los escudos raros", "los escudos legendarios", "los escudos miticos"],
+        "Anillos" : ["los anillos comúnes", "los anillos raros", "los anillos legendarios", "los anillos miticos"],
+        "Amuletos" : ["los amuletos comúnes", "los amuletos raros", "los amuletos legendarios", "los amuletos miticos"]
+    }
+
+    posicion = items.index(producto)
+    productoSeleccionado = items[posicion]
+    posicion += 1
+    itemSeleccion = itemsPorRareza[productoSeleccionado][int(rareza)]
     rarezaSeleccionada = rarezas[rareza]
     rarezaSeleccionadaProdecure = rarezasFiltro[rareza]
-    
-    print(posicion)
-    print(rarezaSeleccionada)
+
     cantidadItemsDistintos = models.CantidadPorRarezaItemsDistintos(posicion,rarezaSeleccionadaProdecure)
+    demandaRareza = models.DemandaPorRareza(posicion, rarezaSeleccionadaProdecure)
+    print(demandaRareza)
+    demandaRarezaFinal = demandaRareza[2]
     precioPromedioRareza = models.PrecioPromedioPorRareza(posicion,rarezaSeleccionadaProdecure)
     DatosTiempo = models.CantidadRarezaPorTiempo(posicion, rarezaSeleccionadaProdecure)
     
@@ -230,11 +257,13 @@ def ProfundizacionRarezaVededor(request, producto, rareza):
     
     context = {
         "Rareza" : rarezaSeleccionada,
+        "demandaRareza" : demandaRarezaFinal,
         "color" : color,
         "variedadItems" : variedadItems,
         "precioPromedio" : precioPromedio,
         "tiempoObtencion" : tiempo,
-        "cantidad" : cantidad
+        "cantidad" : cantidad,
+        "itemSeleccionado" : itemSeleccion
     }
     return render(request, 'detalleRarezaVendedor.html', context)
 

@@ -180,3 +180,11 @@ def DemandaPorMercado(categoria, mercado):
         result = cursor.fetchall()
         total = list(result[0])
     return total
+
+def DemandaPorRareza(categoria, rareza):
+    with connection.cursor() as cursor:
+        params = [categoria, rareza]
+        cursor.callproc('obtener_demanda_por_tipo_y_rareza', params)
+        result = cursor.fetchall()
+        total = result[0]
+    return total

@@ -14,21 +14,35 @@
             font-weight: bold; 
         }
         body {
-            background-color: #1a0530;
-            background-position: top left, top right;
-            background-repeat: no-repeat;
-            background-size: 5% 100%;
+            background: linear-gradient(45deg, #8e44ad, #1abc9c, #ff1493, #8e44ad); /* Gradiente con colores llamativos */
+            background-size: 300% 300%; /* Hace que el gradiente sea más grande para un movimiento suave */
             color: white; /* Cambiar todo el texto del body a blanco */
             margin-top: 0; /* Eliminar cualquier margen del body */
             font-family: 'Bebas Neue', sans-serif;
+        
+            /* Añade animación */
+            animation: neonGradient 8s ease infinite;
+        }
+        
+        /* Animación del fondo */
+        @keyframes neonGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar" id= "barra" style = "background-color: {{color|safe}}">
+    <nav class="navbar" id= "barra" style = "color: black;">
         <div class="container-fluid" style = "justify-content: center">
-            <h2 style="text-align: center; margin-right: 20px; padding-top: 10px; color:{{colorLetra|safe}}">
+            <h2 style="text-align: center; margin-right: 20px; padding-top: 10px; font-size: 50px; font-weight: bold;">
                 Datos de los items del {{Mercado|safe}}
             </h2>
         </div>

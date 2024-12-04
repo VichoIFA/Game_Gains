@@ -9,7 +9,7 @@ urlpatterns = [
     path('DashboardComprador/<str:producto>/<str:precio>', views.DashboardComprador, name='DashboardComprador'),
     path('detalleRarezaComprador/<str:producto>/<int:rareza>', views.ProfundizacionRareza, name="Rareza"),
     path('detalleProductoMercado/<str:producto>/<int:mercado>', views.ProfundizacionMercado, name="Mercado"),
-    path('DashboardVendedor/<str:producto>/<int:precio>/<int:cantidad>/<str:rareza>', views.DashboardVendedor, name= "DashboardVendedor"),
+    path('DashboardVendedor/<str:producto>/<str:precio>/<int:cantidad>/<str:rareza>', views.DashboardVendedor, name= "DashboardVendedor"),
     path('detalleRarezaVendedor/<str:producto>/<int:rareza>', views.ProfundizacionRarezaVededor, name="Rareza"),
     path('detalleProductoMercadoVendedor/<str:producto>/<int:mercado>', views.ProfundizacionMercadoVendedor, name="Mercado"),
 ]

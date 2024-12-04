@@ -217,29 +217,49 @@
                 </a style = "color :#1c1b1b">
                 <ul class="list-unstyled ps-0">
                     
-                <li class="mb-1">
-                    <button type = "button" id = "dashboard-btn" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboardCollapse" aria-expanded="false" aria-controls="dashboardCollapse"  style = "color:white; font-weight: bold;" >
-                        Dashboard
-                    </button>
-                    <div class="collapse" id="dashboardCollapse">
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:white !important;">Idioma</a></li>
-                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:white !important;">Configuracion de datos</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <button type="button" id="data-btn" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dataCollapse" aria-expanded="false" aria-controls="dataCollapse" style="color:white; font-weight: bold;">
-                    Estadisticas
-                </button>
-                <div class="collapse" id="dataCollapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li>
+                    <li class="mb-1">
+                        <button type = "button" id = "dashboard-btn" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboardCollapse" aria-expanded="false" aria-controls="dashboardCollapse"  style = "color:white; font-weight: bold;" >
+                            Configuración
+                        </button>
+                        <div class="collapse" id="dashboardCollapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a class="link-body-emphasis d-inline-flex text-decoration-none rounded clickable-text" style="color:white !important;" onclick="openPage('/profundizacion/{{ciudad|safe}}/1')">Datos producto categoría 1</a></li>
-                                <li><a class="link-body-emphasis d-inline-flex text-decoration-none rounded clickable-text" style="color:white !important;" onclick="openPage('/profundizacion/{{ciudad|safe}}/2')">Datos producto categoría 2</a></li>
-                                <li><a class="link-body-emphasis d-inline-flex text-decoration-none rounded clickable-text" style="color:white !important;" onclick="openPage('/profundizacion/{{ciudad|safe}}/3')">Datos producto categoría 3</a></li>
+                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:white !important;">Idioma</a></li>
+                            <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded" style = "color:white !important;">Colores</a></li>
                             </ul>
-                        </li>
+                        </div>
+                    </li>
+                    <button type="button" id="data-btn" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dataCollapse" aria-expanded="false" aria-controls="dataCollapse" style = "color:white; font-weight: bold;">
+                        Estadisticas
+                    </button>
+                    <div class="collapse" id="dataCollapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li>
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#subDashboardCollapse" aria-expanded="false" aria-controls="subDashboardCollapse" style = "color:white; font-weight: bold;">
+                                    Datos por Mercado
+                                </button>
+                                <div class="collapse" id="subDashboardCollapse">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="link-body-emphasis d-inline-flex text-decoration-none rounded clickable-text" style = "color:white !important;" onclick="openPage('/detalleProductoMercado/{{producto|safe}}/0')">Mercado Central</a></li>
+                                        <li><a class="link-body-emphasis d-inline-flex text-decoration-none rounded clickable-text" style = "color:white !important;" onclick="openPage('/detalleProductoMercado/{{producto|safe}}/1')">Mercado del Bosque</a></li>
+                                        <li><a class="link-body-emphasis d-inline-flex text-decoration-none rounded clickable-text" style = "color:white !important;" onclick="openPage('/detalleProductoMercado/{{producto|safe}}/2')">Mercado del Norte</a></li>
+                                        <li><a class="link-body-emphasis d-inline-flex text-decoration-none rounded clickable-text" style = "color:white !important;" onclick="openPage('/detalleProductoMercado/{{producto|safe}}/3')">Mercado del Este</a></li>
+                                        <li><a class="link-body-emphasis d-inline-flex text-decoration-none rounded clickable-text" style = "color:white !important;" onclick="openPage('/detalleProductoMercado/{{producto|safe}}/4')">Mercado Oscuro</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#subDashboardCollapse2" aria-expanded="false" aria-controls="subDashboardCollapse2" style = "color:white; font-weight: bold;">
+                                    Datos por rareza
+                                </button>
+                                <div class="collapse" id="subDashboardCollapse2">
+                                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a class="link-body-emphasis d-inline-flex text-decoration-none rounded clickable-text" style = "color:white !important;" onclick="openPage('/detalleRarezaComprador/{{producto|safe}}/0')">Común</a></li>
+                                        <li><a class="link-body-emphasis d-inline-flex text-decoration-none rounded clickable-text" style = "color:white !important;" onclick="openPage('/detalleRarezaComprador/{{producto|safe}}/1')">Raro</a></li>
+                                        <li><a class="link-body-emphasis d-inline-flex text-decoration-none rounded clickable-text" style = "color:white !important;" onclick="openPage('/detalleRarezaComprador/{{producto|safe}}/2')">Legendario</a></li>
+                                        <li><a class="link-body-emphasis d-inline-flex text-decoration-none rounded clickable-text" style = "color:white !important;" onclick="openPage('/detalleRarezaComprador/{{producto|safe}}/3')">Mítico</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                     </ul>
                 </div>
             </li>
@@ -334,7 +354,7 @@
                             </div>
                             <div class="row" style="padding-top: 30px;">
                                 <div class="col-lg-12 col-xl-12" style="padding-bottom:30px;">
-                                    <div class="card text-center shadow-lg" style="border-radius: 15px; height: 300px; overflow: hidden; max-height: 350px; background-color: rgba(255, 255, 255, 0.5);">
+                                    <div class="card text-center shadow-lg" style="border-radius: 15px; height: 400px; overflow: hidden; max-height: 400px; background-color: rgba(255, 255, 255, 0.5);">
                                         <div class="card-header text-white" style="background-color: rgba(60, 12, 97, 0.9); border-top-left-radius: 15px; border-top-right-radius: 15px;">
                                             <h5 class="card-title mb-0">Stock por rareza</h5>
                                         </div>
@@ -399,9 +419,9 @@
                                 {
                                     label: 'Cantidad de items por mercado',
                                     data: {{ nombreMercado|safe }},
-                                    backgroundColor: ["#331F8A", "#1F8A65", "#1F598A","#7F1758", "#060411"],
-                                    borderColor: ["#331F8A", "#1F8A65", "#1F598A","#7F1758", "#060411"],
-                                    borderWidth: 1
+                                    backgroundColor: ["#7209B7", "#560BAD", "#480CA8","#3A0CA3", "#3F37C9"],
+                                    borderColor: ["#000", "#000", "#000","#000", "#000"],
+                                    borderWidth: 1,
                                 }
                             ]
                         };
@@ -538,59 +558,41 @@
                                 {
                                     label: 'Cantidad de items por mercado',
                                     data: {{ cantidadRareza|safe }},
-                                    backgroundColor: ["#615574", "#388A1F", "#1F6E8A","#8A3C1F"],
-                                    borderColor: ["#615574", "#388A1F", "#1F6E8A","#8A3C1F"],
-                                    borderWidth: 1
+                                    backgroundColor: ["#1008F7", "#2C26D9", "#0A059A", "#16136D"],
+                                    borderColor: [], // Borde blanco entre secciones
+                                    borderWidth: 1,
                                 }
                             ]
                         };
                     
                         var mainChartCtx2 = document.getElementById('mainChart2').getContext('2d');
                         var mainChart2 = new Chart(mainChartCtx2, {
-                            type: 'bar',
+                            type: 'pie', // Cambiado a "pie"
                             data: mainChartData2,
                             options: {
                                 responsive: true,
                                 maintainAspectRatio: false,
                                 plugins: {
                                     legend: {
-                                        display: false, // Mostrar la leyenda
+                                        display: true, // Mostrar la leyenda
+                                        position: 'left', // Ubicar la leyenda a la izquierda
                                         labels: {
-                                            color: 'black', // Cambiar el color del texto de la leyenda
+                                            color: 'black', // Color del texto de la leyenda
                                             font: {
-                                                size: 14, // Ajustar el tamaño de la fuente (opcional)
-                                                weight:'bold'
+                                                size: 14, // Ajustar el tamaño de la fuente
+                                                weight: 'bold'
                                             }
                                         }
-                                    }
-                                },
-                                scales: {
-                                    x: {
-                                        title: {
-                                            display: true,
-                                            text: 'Nombres de rarezas',
-                                            color: 'black' // Color del título del eje X
-                                        },
-                                        ticks: {
-                                            color: 'black' // Color de las etiquetas del eje X
-                                        },
-                                        grid: {
-                                            color: 'black' // Color de las líneas del grid del eje X
-                                        }
                                     },
-                                    y: {
-                                        title: {
-                                            display: true,
-                                            text: 'Cantidad de items',
-                                            color: 'black' // Color del título del eje Y
-                                        },
-                                        ticks: {
-                                            color: 'black' // Color de las etiquetas del eje Y
-                                        },
-                                        grid: {
-                                            color: 'black' // Color de las líneas del grid del eje Y
-                                        },
-                                        beginAtZero: true
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function (context) {
+                                                const value = context.raw;
+                                                const total = context.dataset.data.reduce((sum, val) => sum + val, 0);
+                                                const percentage = ((value / total) * 100).toFixed(2);
+                                                return `${context.label}: ${value} (${percentage}%)`;
+                                            }
+                                        }
                                     }
                                 },
                                 layout: {
@@ -599,19 +601,18 @@
                                 onClick: async (event, elements) => {
                                     if (elements.length > 0) {
                                         var index = elements[0].index;
-                                
+                    
                                         try {
                                             const link = `/detalleRarezaComprador/{{producto|safe}}/${index}`;
-                                            const width = 500; 
-                                            const height = 700; 
-                                
+                                            const width = 500;
+                                            const height = 700;
+                    
                                             const left = window.screenX + (window.innerWidth / 2) - (width / 2);
                                             const top = window.screenY + (window.innerHeight / 2) - (height / 2);
-                                
+                    
                                             const nuevaVentana = window.open("", "_blank", `width=${width},height=${height},top=${top},left=${left},resizable=yes`);
-                                
+                    
                                             if (nuevaVentana) {
-
                                                 nuevaVentana.document.open();
                                                 nuevaVentana.document.write(`
                                                     <!DOCTYPE html>
@@ -655,7 +656,7 @@
                                                     </html>
                                                 `);
                                                 nuevaVentana.document.close();
-                                
+                    
                                                 nuevaVentana.location.href = link;
                                             } else {
                                                 console.error("No se pudo abrir la nueva ventana.");
@@ -665,7 +666,6 @@
                                         }
                                     }
                                 }
-                                
                             }
                         });
                     });
